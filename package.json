@@ -2,6 +2,7 @@
   "name": "project-backend",
   "version": "1.0.0",
   "description": "Proyecto Final del curso backend de CoderHouse, comision 47290",
+  "type": "module",
   "main": "src/app.js",
   "scripts": {
     "start": "node --watch ./src/app.js"
