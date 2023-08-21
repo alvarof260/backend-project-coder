@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { validateProduct } from '../schema/product.js'
+import { validatePartialProduct, validateProduct } from '../schema/product.js'
 
 const products = [
   {
@@ -182,4 +182,27 @@ router.post('/', (req, res) => {
   res.status(201).json(newProduct)
 })
 
+router.put('/:id', (req, res) => {
+  const result = validatePartialProduct(req.body)
+  if (result.error) return res.status(400).json({ error: result.error })
+
+  const id = req.params.id
+  const indexProduct = products.findIndex(item => item.id === parseInt(id))
+  if (indexProduct < 0) return res.status(400).json({ error: 'Product not found' })
+  const olderProduct = products[indexProduct]
+  products[indexProduct] = {
+    ...olderProduct,
+    ...result.data
+  }
+  res.status(200).json(products[indexProduct])
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  const indexProduct = products.findIndex(item => item.id === parseInt(id))
+  if (indexProduct < 0) return res.status(404).json({ error: 'Product not found' })
+  const productDeleted = products[indexProduct]
+  products.splice(indexProduct, 1)
+  res.status(201).json(productDeleted)
+})
 export default router

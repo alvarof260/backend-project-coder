@@ -32,3 +32,7 @@ const schemaProduct = object({
 export function validateProduct (object) {
   return schemaProduct.safeParse(object)
 }
+
+export function validatePartialProduct (object) {
+  return schemaProduct.partial().safeParse(object)
+}
