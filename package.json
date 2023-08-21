@@ -1,0 +1,38 @@
+{
+  "name": "project-backend",
+  "version": "1.0.0",
+  "description": "Proyecto Final del curso backend de CoderHouse, comision 47290",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node --watch ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarof260/backend-project-coder.git"
+  },
+  "keywords": [
+    "course",
+    "project",
+    "backend",
+    "e-commerce",
+    "coderhouse",
+    "javascript",
+    "node",
+    "express"
+  ],
+  "author": "Alvaro Estanislao Figueroa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvarof260/backend-project-coder/issues"
+  },
+  "homepage": "https://github.com/alvarof260/backend-project-coder#readme",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
