@@ -38,4 +38,23 @@ export class CartManager {
     if (!cart) return undefined
     return cart
   }
+
+  async addProduct (cartId, prodId) {
+    const carts = await this.getCarts()
+    const cartIndex = carts.findIndex(item => item.id === parseInt(cartId))
+
+    if (cartIndex < 0) return undefined
+
+    const cart = carts[cartIndex]
+    const productIndex = cart.products.findIndex(item => item.id === parseInt(prodId))
+
+    if (productIndex < 0) {
+      cart.products.push({ id: parseInt(prodId), quantity: 1 })
+    } else {
+      cart.products[productIndex].quantity++
+    }
+    await writeFile(this.#path, JSON.stringify(carts, null, '\t'))
+
+    return cart
+  }
 }

@@ -41,7 +41,7 @@ export class ProductManager {
     if (product) {
       return product
     } else {
-      throw new Error(`id:${idProd}, not found`)
+      return undefined
     }
   }
 
